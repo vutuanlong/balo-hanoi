@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'UTM-Avo-Regular';
+   	src: url('font-utmavo/utm-avo.eot');
+	src: url('font-utmavo/utm-avo.woff') format('woff'), url('font-utmavo/utm-avo.ttf') format('truetype'), url('font-utmavo/utm-avo.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'UTM-Avo-Bold';
+    src: url('font-utmavo/utm-avobold.eot');
+	src: url('font-utmavo/utm-avobold.woff') format('woff'), url('font-utmavo/utm-avobold.ttf') format('truetype'), url('font-utmavo/utm-avobold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+@font-face {
+    font-family: 'UTM-Avo-Italic';
+	src: url('font-utmavo/utm-avoitalic.eot');
+	src: url('font-utmavo/utm-avoitalic.woff') format('woff'), url('font-utmavo/utm-avoitalic.ttf') format('truetype'), url('font-utmavo/utm-avoitalic.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	
+}
+@font-face {
+    font-family: 'UTM-Avo-Bold-Italic';
+	src: url('font-utmavo/utm-avobold-italic.eot');
+	src: url('font-utmavo/utm-avobold-italic.woff') format('woff'), url('font-utmavo/utm-avobold-italic.ttf') format('truetype'), url('font-utmavo/utm-avobold-italic.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

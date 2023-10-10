@@ -1,0 +1,270 @@
+/*
+Theme Name: 
+Description: 
+*/
+/**
+ * 3.0 Text Elements
+ * ----------------------------------------------------------------------------
+ */
+.entry-content cite,
+.entry-content dfn,
+.entry-content em {
+	font-style: italic;
+}
+.entry-content p {
+	line-height: 1.8;
+}
+
+.entry-content ol,
+.entry-content ul {
+	margin: 16px 0;
+	padding: 0 0 0 40px;
+}
+
+.entry-content ul {
+	list-style-type: square;
+}
+
+.entry-content ol {
+	list-style: decimal outside;
+}
+
+.entry-content li > ul,
+.entry-content li > ol {
+	margin: 0;
+}
+
+.entry-content dl {
+	margin: 0 20px;
+}
+
+.entry-content dt {
+	font-weight: bold;
+}
+
+.entry-content dd {
+	margin: 0 0 20px;
+}
+
+.entry-content code,
+.entry-content kbd,
+.entry-content pre,
+.entry-content samp {
+	font-size: 14px;
+}
+
+.entry-content pre {
+    font-size: 15px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-radius: 0;
+    line-height: 1.8;
+    border: 0;
+    background: #f5f5f5;
+    padding: 10px;
+    border-left: 5px solid #ddd;
+    margin: 20px 0;
+	font-family: 'Segoe';
+}
+
+.entry-content blockquote,
+.entry-content q {
+	quotes: none;
+}
+
+.entry-content blockquote:before,
+.entry-content blockquote:after,
+.entry-content q:before,
+.entry-content q:after {
+	content: "";
+	content: none;
+}
+
+.entry-content blockquote {
+	font-size: 15px;
+	font-weight: 300;
+	margin: 10px 0;
+	background: rgba(0, 0, 0, 0.02);
+}
+
+.entry-content blockquote blockquote {
+	margin-right: 0;
+}
+
+.entry-content blockquote cite,
+.entry-content blockquote small {
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.entry-content cite {
+	border-bottom: 0;
+}
+
+.entry-content abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+.entry-content address {
+	font-style: italic;
+	margin: 0 0 24px;
+}
+
+.entry-content del {
+	color: #333;
+}
+
+.entry-content ins {
+	background: #fff9c0;
+	border: none;
+	color: #333;
+	text-decoration: none;
+}
+
+.entry-content sub,
+.entry-content sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.entry-content sup {
+	top: -0.5em;
+}
+
+.entry-content sub {
+	bottom: -0.25em;
+}
+
+
+/**
+ * 4.0 Links
+ * ----------------------------------------------------------------------------
+ */
+
+.entry-content a {
+	text-decoration: none;
+	color: #5fb435;
+}
+
+.entry-content a:active,
+.entry-content a:hover {
+	color: #337ab7;
+	outline: 0;
+}
+
+
+/**
+ * 5.0 Alignment
+ * ----------------------------------------------------------------------------
+ */
+
+.entry-content .alignleft {
+	float: left;
+	margin: 5px 20px 5px 0;
+}
+
+.entry-content .alignright {
+	float: right;
+	margin: 5px 0 5px 20px;
+}
+
+.entry-content .aligncenter {
+	display: block;
+	margin: 5px auto;
+}
+
+.entry-content img.alignnone {
+	display: block;
+	margin: 5px auto;
+}
+
+
+/**
+ * 6.0 Tables
+ * ----------------------------------------------------------------------------
+ */
+
+.entry-content table {
+	border: 1px solid #ededed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 14px;
+	line-height: 2;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+.entry-content caption,
+.entry-content th,
+.entry-content td {
+	font-weight: normal!important;
+    border: 1px solid #ededed;
+	text-align: left;
+}
+
+.entry-content caption {
+	font-size: 16px;
+	margin: 20px 0;
+}
+
+.entry-content th {
+	font-weight: normal!important;
+	text-transform: uppercase;
+    border: 1px solid #ededed;
+}
+
+.entry-content td {
+	border: 1px solid #ededed;
+	padding: 6px 10px;
+}
+
+
+/**
+ * 7.0 Images
+ * ----------------------------------------------------------------------------
+ */
+
+.entry-content img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.entry-content .wp-caption {
+	background: transparent;
+	border: none;
+	padding: 0;
+	text-align: center;
+}
+
+.entry-content .wp-caption.alignleft {
+	margin: 5px 10px 5px 0;
+}
+
+.entry-content .wp-caption.alignright {
+	margin: 5px 0 5px 10px;
+}
+
+.entry-content .wp-caption-dt {
+	margin: 0;
+}
+
+.entry-content .wp-caption .wp-caption-text,
+.entry-content .wp-caption-dd {
+	color: #666;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 300;
+	line-height: 2.5;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+.entry-content .mceTemp + ul,
+.entry-content .mceTemp + ol  {
+	list-style-position: inside;
+}
