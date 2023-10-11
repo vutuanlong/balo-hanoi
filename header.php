@@ -92,7 +92,12 @@
 							</div> -->
 
 							<div class="site-search">
-								<?php echo get_search_form() ?>
+								<a class="site-search-toggler" href="#site-search">
+									<i class="glyphicon glyphicon-search"></i>
+								</a>
+								<div id="site-search">
+									<?php echo get_search_form() ?>
+								</div>
 								<div class="btn-group text-center">
 									<a href="<?= esc_url( home_url() ) ?>/gio-hang/" class="nodeco" rel="nofollow">
 										<span class="glyphicon glyphicon-shopping-cart  f20 gray-nm" aria-hidden="true"></span>
