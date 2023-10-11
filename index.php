@@ -10,26 +10,24 @@
 get_header();?>
 
 <div class="banner-section">
-	<div class="container">
-		<div class="banner-slide">
-			<div class="owl__slider owl-carousel owl-theme">
-				<?php  $args = array(
-					'post_type' => 'banner',
-					'showposts' => '5',
-					'order' => 'DESC', 
-					'orderby' => 'ID',                          
-				); 
-				$news = new WP_Query($args); ?>
-				<?php  if ($news->have_posts()) : ?>
-					<?php while ($news->have_posts()) : $news->the_post();?>
-						<div class="item">
-							<?php the_post_thumbnail( '',array( 'class' => 'img-responsive center-block' ) ); ?>
-						</div>
-					<?php endwhile; ?>
-				<?php else : ?>
-					<?php get_template_part( 'template-parts/content', 'none' ); ?>
-				<?php endif; wp_reset_query();?>
-			</div>
+	<div class="banner-slide">
+		<div class="owl__slider owl-carousel owl-theme">
+			<?php  $args = array(
+				'post_type' => 'banner',
+				'showposts' => '5',
+				'order' => 'DESC',
+				'orderby' => 'ID',
+			);
+			$news = new WP_Query($args); ?>
+			<?php  if ($news->have_posts()) : ?>
+				<?php while ($news->have_posts()) : $news->the_post();?>
+					<div class="item">
+						<?php the_post_thumbnail( '',array( 'class' => 'img-responsive center-block' ) ); ?>
+					</div>
+				<?php endwhile; ?>
+			<?php else : ?>
+				<?php get_template_part( 'template-parts/content', 'none' ); ?>
+			<?php endif; wp_reset_query();?>
 		</div>
 	</div>
 </div>
@@ -57,13 +55,13 @@ get_header();?>
 				<h2 class="h2-home text-center">BALO NỔI BẬT
 					<a href="https://balohanoi.vn/danh-muc/balo-noi-bat/" class="view-more-product" rel="nofollow">Xem tất cả</a>
 					</h2>
-			</div>			
+			</div>
 			<div class="product-item">
 				<div class="owl_product owl-carousel owl-theme">
 					<?php  $args = array(
 						'post_type' => 'product',
 						'showposts' => '8',
-						'order' => 'DESC', 
+						'order' => 'DESC',
 						'orderby' => 'date',
 						'tax_query' => array(
 							array(
@@ -71,14 +69,14 @@ get_header();?>
 								'field'    => 'term_id',
 								'terms'    => 49,
 							),
-						),                          
-					); 
+						),
+					);
 					$news = new WP_Query($args); ?>
 					<?php  if ($news->have_posts()) : ?>
 						<?php while ($news->have_posts()) : $news->the_post(); global $product;?>
 
 							<div class="item">
-								
+
 									<div class="item-img">
 										<a href="<?php the_permalink() ?>">
 											<?php the_post_thumbnail( 'medium',array( 'class' => 'img-responsive center-block' ) ); ?>
@@ -93,7 +91,7 @@ get_header();?>
 									<span class="price">
 										<?php echo $product->get_price_html(); ?>
 									</span>
-								
+
 							</div>
 
 						<?php endwhile; ?>
@@ -107,16 +105,16 @@ get_header();?>
 		<div class="f1-product">
 			<div class="div-title">
 				<h2 class="h2-home text-center">
-					TÚI XÁCH NỔI BẬT 	
+					TÚI XÁCH NỔI BẬT
 					<a href="https://balohanoi.vn/danh-muc/tui-xach-noi-bat/" class="view-more-product" rel="nofollow">Xem tất cả</a>
 			</h2>
-			</div>			
+			</div>
 			<div class="product-item">
 				<div class="owl_product owl-carousel owl-theme">
 					<?php  $args = array(
 						'post_type' => 'product',
 						'showposts' => '8',
-						'order' => 'DESC', 
+						'order' => 'DESC',
 						'orderby' => 'date',
 						'tax_query' => array(
 							array(
@@ -124,12 +122,12 @@ get_header();?>
 								'field'    => 'term_id',
 								'terms'    => 50,
 							),
-						),                          
-					); 
+						),
+					);
 					$news = new WP_Query($args); ?>
 					<?php  if ($news->have_posts()) : ?>
 						<?php while ($news->have_posts()) : $news->the_post(); global $product;?>
-							
+
 								<div class="item">
 									<div class="item-img">
 										<a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'medium',array( 'class' => 'img-responsive center-block' ) ); ?></a>
@@ -149,16 +147,16 @@ get_header();?>
 		<div class="f1-product">
 			<div class="div-title">
 				<h2 class="h2-home text-center">
-					VALI NỔI BẬT 
+					VALI NỔI BẬT
 					<a href="https://balohanoi.vn/danh-muc/vali-noi-bat/" class="view-more-product" rel="nofollow">Xem tất cả</a>
 				</h2>
-			</div>			
+			</div>
 			<div class="product-item">
 				<div class="owl_product owl-carousel owl-theme">
 					<?php  $args = array(
 						'post_type' => 'product',
 						'showposts' => '8',
-						'order' => 'DESC', 
+						'order' => 'DESC',
 						'orderby' => 'date',
 						'tax_query' => array(
 							array(
@@ -166,8 +164,8 @@ get_header();?>
 								'field'    => 'term_id',
 								'terms'    => 51,
 							),
-						),                          
-					); 
+						),
+					);
 					$news = new WP_Query($args); ?>
 					<?php  if ($news->have_posts()) : ?>
 						<?php while ($news->have_posts()) : $news->the_post(); global $product;?>
@@ -189,16 +187,16 @@ get_header();?>
 
 		<div class="f1-product">
 			<div class="div-title">
-				<h2 class="h2-home text-center"> Phụ Kiện 
+				<h2 class="h2-home text-center"> Phụ Kiện
 					<a href="https://balohanoi.vn/danh-muc/phu-kien/" class="view-more-product" rel="nofollow">Xem tất cả</a>
 				</h2>
-			</div>			
+			</div>
 			<div class="product-item">
 				<div class="owl_product owl-carousel owl-theme">
 					<?php  $args = array(
 						'post_type' => 'product',
 						'showposts' => '8',
-						'order' => 'DESC', 
+						'order' => 'DESC',
 						'orderby' => 'date',
 						'tax_query' => array(
 							array(
@@ -206,8 +204,8 @@ get_header();?>
 								'field'    => 'term_id',
 								'terms'    => 389,
 							),
-						),                          
-					); 
+						),
+					);
 					$news = new WP_Query($args); ?>
 					<?php  if ($news->have_posts()) : ?>
 						<?php while ($news->have_posts()) : $news->the_post(); global $product;?>
@@ -239,15 +237,15 @@ get_header();?>
 				<h2 class="h2-home text-center">
 					THÔNG TIN HỮU ÍCH
 				</h2>
-			</div>			
+			</div>
 			<div class="news-item">
 				<div class="owl_news owl-carousel owl-theme">
 					<?php  $args = array(
 						'post_type' => 'post',
 						'showposts' => '8',
-						'order' => 'DESC', 
-						'orderby' => 'date',			                                       
-					); 
+						'order' => 'DESC',
+						'orderby' => 'date',
+					);
 					$news = new WP_Query($args); ?>
 					<?php  if ($news->have_posts()) : ?>
 						<?php while ($news->have_posts()) : $news->the_post(); global $product;?>
@@ -280,7 +278,7 @@ get_header();?>
 				<div class="col-sm-9 col-md-9">
 					<div class="intro-left">
 						<?php echo of_get_option('home-des') ?>
-						
+
 					</div>
 				</div>
 				<div class="col-sm-3 col-md-3">
