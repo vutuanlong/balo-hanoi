@@ -1,4 +1,4 @@
-/*
+	/*
 Theme Name: Balo Theme
 Theme URI: http://thietkewordpress.org/
 Author: ZW
@@ -169,7 +169,7 @@ h1.logo {
     font-weight: bold;
     overflow: hidden;
     cursor: pointer;
-    margin: 20px 5px; 
+    margin: 20px 5px;
 }
 p.name-title-mobile {
     padding: 5px 10px;
@@ -702,7 +702,7 @@ nav.breadcrumbs,.woocommerce .woocommerce-breadcrumb {
 .navigation li {
   display: inline;
 }
-  
+
 .navigation li a,
 .navigation li a:hover,
 .navigation li.active a,
@@ -1040,8 +1040,8 @@ form.cart {
     background:#ddd;
     border: 1px solid #ddd;
     padding: 10px;
-    margin-bottom: 10px;   
-}    
+    margin-bottom: 10px;
+}
 /* end sp chi tiet */
 
 /* filter archive */
@@ -1260,8 +1260,8 @@ a.page-numbers {
 /* INTERFACE MOBILE */
 @media only screen and (max-width: 320px) {
 	.fixed__call{font-size: 13px;}
-}        
-@media only screen and (max-width: 767px) {        
+}
+@media only screen and (max-width: 767px) {
     .cta{height: inherit;}
     .cta .cta-row{height: inherit;}
     .cta .cta-item1, .cta .cta-item2{background: inherit; padding: 10px 0;}
@@ -1278,7 +1278,7 @@ a.page-numbers {
     .wpis-slider-for .slick-prev, .wpis-slider-for .slick-next{display: block !important;}
 }
 
-@media only screen and (min-width: 768px){    
+@media only screen and (min-width: 768px){
     .f1-product .div-title h2{width: 40%;}
 }
 @media only screen and (min-width: 1024px) and (max-width: 1200px){
@@ -1476,11 +1476,11 @@ li.mega-none-mn>a {
     .cta .cta-item1 p span, .cta .cta-item2 p span{ font-size: 24px; }
     .cta-item3 {
     padding: 20px 0;
-    } 
+    }
 
     .woocommerce-page .product .images .slick-slide img:nth-child(n+2){display: none;}
-    .related {margin: 20px 0 30px;}   
-    
+    .related {margin: 20px 0 30px;}
+
     /* thieu */
     .tHieu .tHieu-content ul li{
         width: 47%;

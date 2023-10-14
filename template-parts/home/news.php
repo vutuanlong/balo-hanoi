@@ -3,8 +3,8 @@
 	<div class="container">
 		<div class="f1-product">
 
-			<h2 class="tr-section-title h2-home text-center">
-				THÔNG TIN HỮU ÍCH
+			<h2 class="tr-section-title h2-home text-left">
+				Bài viết mới nhất
 			</h2>
 
 			<div class="news-item">

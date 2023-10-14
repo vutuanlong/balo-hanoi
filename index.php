@@ -13,7 +13,7 @@ get_header();?>
 
 get_template_part('template-parts/home/banner');
 get_template_part('template-parts/home/category-product');
-// get_template_part('template-parts/home/news');
+get_template_part('template-parts/home/news');
 // get_template_part( 'template-parts/home/intro' );
 // get_template_part( 'template-parts/home/cta' );
 
