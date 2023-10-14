@@ -31,9 +31,9 @@
 									</a>
 								</div>
 								<a href="<?php the_permalink() ?>">
-									<h4 class="product_name"><?php echo zw_limit_words( get_the_title(), 8 ) ?></h4>
+									<h4 class="product_name"><?php echo get_the_title() ?></h4>
 								</a>
-								<!-- <p><?php echo zw_limit_words( get_the_excerpt(), 21 ); ?></p> -->
+								<p><?php echo zw_limit_words( get_the_excerpt(), 18 ); ?></p>
 							</div>
 						<?php endwhile; ?>
 					<?php else : ?>

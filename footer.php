@@ -8,98 +8,81 @@
  * @link       www.zoomworld.vn
  */?>
 
- <div class="cta">
- 	<div class="container">	
- 		<div class="cta-row">
- 			<div class="row">
- 				<div class="col-xs-12 col-sm-4 col-md-4">
- 					<div class="cta-item1 text-center">
- 						<p>
- 							<span>GỌI MUA HÀNG</span>
- 							<span class="hot-line">0912.85.2222</span>
- 						</p>
- 					</div>
- 				</div>
+<div class="trai-nghiem">
+	<div class="container">
+		<div class="tr-section-title">Trải nghiệm mua sắm tại Balohanoi.vn</div>
+		<div class="trai-nghiem__wrapper">
+			<div class="owl_trai-nghiem owl-carousel owl-theme">
+				<?php
+				$groups = rwmb_meta( 'trai_nghiem', [ 'object_type' => 'setting' ], 'themes-options-new' );
+				foreach ( $groups as $group ) :
+					// Field anh:
+					$image_id = $group['anh'] ?? 0;
+					$image    = RWMB_Image_Field::file_info( $image_id, [ 'size' => 'full' ] );
+					?>
+					<div class="trai-nghiem__item">
+						<img width="300" height="450" src="<?= $image['url']; ?>" loading="lazy">
+						<span class="slider-title"><?= $group['text'] ?? '' ?></span>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+</div>
 
- 				<div class="col-xs-12 col-sm-4 col-md-4">
- 					<div class="cta-item2 text-center">
- 						<p>
- 							<span>GÓP Ý - KHIẾU NẠI</span>
- 							<span class="hot-line"> 024.39936092</span>
- 						</p>
- 					</div>
- 				</div>
+<?php get_template_part( 'template-parts/home/cta' ); ?>
 
- 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<div class="cta-item3 text-center">
+<div class="tHieu">
+	<div class="container">
+		<div class="tHieu-content">
+			<div class="c-titles2">
+				<p class="c-title1">THƯƠNG HIỆU</p>
+			</div>
+			<div class="row seven-cols">
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand1' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand2' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand3' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand4' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand5' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand6' ) ?></div>
+				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar( 'brand7' ) ?></div>
+			</div>
+		</div>
+	</div>
+</div>
 
- 							<p>LIKE BALOTOT TRÊN MẠNG XÃ HỘI</p>
- 							<div class="social">
- 								<a href="<?php echo of_get_option('facebook') ?>" target="_blank" rel="Nofollow"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
- 								<a href="<?php echo of_get_option('instagram') ?>"  target="_blank" rel="Nofollow"><i class="fa fa-instagram" aria-hidden="true"></i></a>
- 								<a href="<?php echo of_get_option('youtube') ?>"  target="_blank" rel="Nofollow"><i class="fa fa-youtube" aria-hidden="true"></i></a>
- 								<a href="<?php echo of_get_option('zalo') ?>"  target="_blank" rel="Nofollow"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/zalo-i.png" alt=""></a>
- 							</div>
+<footer>
+	<div class="c-footer">
+		<div class="c-footer1">
+			<div class="container l-container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<?php dynamic_sidebar( 'footer1' ) ?>
+					</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+						<div class="row">
+							<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+							<?php dynamic_sidebar( 'footer2' ) ?>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+							<?php dynamic_sidebar( 'footer3' ) ?>
+							</div>
+							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
+							<?php dynamic_sidebar( 'footer4' ) ?>
+							</div>
+						</div>
 
- 					</div>
- 				</div>
- 			</div>
- 		</div>
- 	</div>
- </div>
-
-
- <div class="tHieu">
- 	<div class="container">
- 		<div class="tHieu-content">
- 			<div class="c-titles2">
- 				<p class="c-title1">THƯƠNG HIỆU</p>
- 			</div>
- 			<div class="row seven-cols">
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand1') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand2') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand3') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand4') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand5') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand6') ?></div>
- 				<div class="col-xs-12 col-sm-3 col-md-1"><?php dynamic_sidebar('brand7') ?></div>
- 			</div>
- 		</div>	 		
- 	</div>
- </div>
-
- <footer>
- 	<div class="c-footer">
- 		<div class="c-footer1">
- 			<div class="container l-container">
- 				<div class="row">
- 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
- 							<?php dynamic_sidebar('footer1') ?>
- 					</div>
- 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
- 						<div class="row">
- 							<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
- 								<?php dynamic_sidebar('footer2') ?>
- 							</div>
- 							<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
- 								<?php dynamic_sidebar('footer3') ?>
- 							</div>
- 							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
- 								<?php dynamic_sidebar('footer4') ?>
- 							</div>
- 						</div>
-
- 					</div>
- 				</div>
- 				<div class="copywrite">
- 					<p>@ Copyright 2011 <a href="https://balohanoi.vn">Balohanoi.vn</a>. All Rights Reserved</p>
- 				</div>
- 			</div>
- 		</div>
- 	</div>
- </footer>
+					</div>
+				</div>
+				<div class="copywrite">
+					<p>@ Copyright 2011 <a href="https://balohanoi.vn">Balohanoi.vn</a>. All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 <a href="javascript:void(0)" class="scrollTop" rel="Nofollow">
-    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/totop.png">
+	<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/totop.png">
 </a>
 
 <a target="_blank" class="fixed__call hidden-sm hidden-md hidden-lg" href="https://www.messenger.com/t/balotot" style="left:1px;" rel="Nofollow">Gửi tin nhắn</a>

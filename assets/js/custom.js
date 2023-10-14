@@ -90,7 +90,7 @@ $('.owl__related').owlCarousel({
   }
 });
 $('.owl_news').owlCarousel({
-    items:5,
+    items:4,
     loop:true,
     autoplay:false,
     autoplayTimeout:5000,
@@ -105,7 +105,7 @@ $('.owl_news').owlCarousel({
           items:2,
       },
       1000:{
-          items:5,
+          items:4,
       }
   }
 });
