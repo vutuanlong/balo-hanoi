@@ -30,10 +30,20 @@
 										<?php the_post_thumbnail( 'zw-news', array( 'class' => 'img-responsive center-block' ) ); ?>
 									</a>
 								</div>
-								<a href="<?php the_permalink() ?>">
-									<h4 class="product_name"><?php echo get_the_title() ?></h4>
-								</a>
-								<p><?php echo zw_limit_words( get_the_excerpt(), 18 ); ?></p>
+								<div class="item-detail">
+									<a href="<?php the_permalink() ?>">
+										<h4 class="product_name"><?php echo get_the_title() ?></h4>
+									</a>
+									<p><?php echo zw_limit_words( get_the_excerpt(), 18 ); ?></p>
+									<div class="item-detail__meta">
+										<div class="item-date">
+											<?php echo get_the_date() ?>
+										</div>
+										<a class="item-see-more" href="<?php the_permalink() ?>">
+											Xem thêm
+										</a>
+									</div>
+								</div>
 							</div>
 						<?php endwhile; ?>
 					<?php else : ?>
