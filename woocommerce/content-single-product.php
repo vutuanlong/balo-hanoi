@@ -10,9 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
+ * @see         https://docs.woocommerce.com/document/template-structure/
+ * @author      WooThemes
+ * @package     WooCommerce/Templates
  * @version     3.0.0
  */
 
@@ -64,7 +64,7 @@ if ( post_password_required() ) {
 	</div>
 
 
-	<div class="row">
+	<div class="row sp-content">
 		<div class="col-xs-12 col-sm-8 col-md-8">
 			<?php
 				/**
@@ -79,25 +79,28 @@ if ( post_password_required() ) {
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
 			<div class="sp-box">
-				<div class="sp-item text-center">
-					<i class="fa fa-reply-all" aria-hidden="true"></i>
-					<p>DỄ DÀNG ĐỔI TRẢ</p>
-					<p>Đổi trả 7 ngày nếu không hài lòng.<br>Hoàn tiền nếu không hài lòng sản phẩm.</p>
-				</div>
-				<div class="sp-item text-center">
-					<i class="fa fa-users" aria-hidden="true"></i>
-					<p>TƯ VẤN NHIỆT TÌNH</p>
-					<p>Inbox trực tiếp cho page để được tư vấn ngay!<br>Hotline: 0912.85.2222</p>
-				</div>
-				<div class="sp-item text-center">
-					<i class="fa fa-handshake-o" aria-hidden="true"></i>
-					<p>CHÍNH SÁCH BẢO HÀNH</p>
-					<p>Đại lý chính hãng hơn 50 hãng hàng đầu.<br>Bảo hành trọn đời sản phẩm TÚI - BALO</p>
+				<h2>Tại sao nên chọn Balotot.com</h2>
+				<div class="sp-box-content">
+					<div class="sp-item text-center">
+						<i class="fa fa-reply-all" aria-hidden="true"></i>
+						<p>DỄ DÀNG ĐỔI TRẢ</p>
+						<p>Đổi trả 7 ngày nếu không hài lòng.<br>Hoàn tiền nếu không hài lòng sản phẩm.</p>
+					</div>
+					<div class="sp-item text-center">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						<p>TƯ VẤN NHIỆT TÌNH</p>
+						<p>Inbox trực tiếp cho page để được tư vấn ngay!<br>Hotline: 0912.85.2222</p>
+					</div>
+					<div class="sp-item text-center">
+						<i class="fa fa-handshake-o" aria-hidden="true"></i>
+						<p>CHÍNH SÁCH BẢO HÀNH</p>
+						<p>Đại lý chính hãng hơn 50 hãng hàng đầu.<br>Bảo hành trọn đời sản phẩm TÚI - BALO</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	
 	</div>
+	<?php do_action( 'woocommerce_new_single_product_summary' ); ?>
 </div>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

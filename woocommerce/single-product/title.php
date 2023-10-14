@@ -20,4 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+global $post;
+the_terms( $post->ID, 'product-brand', '<div class="product__category">Thương hiệu: ', '', '</div>' );
+
 the_title( '<h1 class="product_title entry-title">', '</h1>' );

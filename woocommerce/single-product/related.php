@@ -21,13 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( $related_products ) : ?>
-<div class="container">
 	<section class="related products">
 
-		<h2><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h2>
+		<h2><?php esc_html_e( 'Sản phẩm cùng thương hiệu', 'woocommerce' ); ?></h2>
 
 		  <!-- <?php //  woocommerce_product_loop_start(); ?>   -->
-		<div class=" owl_product owl-carousel owl-theme">
+		<div class=" owl__related owl-carousel owl-theme">
 
 			<?php foreach ( $related_products as $related_product ) : ?>
 
@@ -45,7 +44,6 @@ if ( $related_products ) : ?>
 		 <!-- <?php // woocommerce_product_loop_end(); ?> -->
 
 	</section>
-</div>
 <?php endif;
 
 wp_reset_postdata();

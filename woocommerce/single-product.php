@@ -22,7 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 <div class="container">
-	<?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
+		<nav class="breadcrumbs ">
+			<?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
+	</nav>
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.

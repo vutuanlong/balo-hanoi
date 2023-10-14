@@ -548,7 +548,7 @@ function devvn_readmore_flatsome() {
 }
 // add_filter( 'woocommerce_after_single_product_summary', 'devvn_quickbuy_form_product', 12 );
 // function devvn_quickbuy_form_product() {
-// 	echo do_shortcode( '[devvn_quickbuy_form id="' . get_the_ID() . '"]' );
+// echo do_shortcode( '[devvn_quickbuy_form id="' . get_the_ID() . '"]' );
 // }
 
 function tdb_remove_output_structured_data() {
@@ -557,6 +557,114 @@ function tdb_remove_output_structured_data() {
 }
 add_action( 'init', 'tdb_remove_output_structured_data' );
 
+/*
+ * Thay chữ Sale thành phần trăm (%) giảm giá
+ * Author: levantoan.com
+ */
+add_filter( 'woocommerce_sale_flash', 'devvn_woocommerce_sale_flash', 10, 3 );
+function devvn_woocommerce_sale_flash( $html, $post, $product ) {
+	return '<span class="onsale"><span>' . devvn_presentage_bubble( $product ) . '</span></span>';
+}
+
+function devvn_presentage_bubble( $product ) {
+	$post_id = $product->get_id();
+
+	if ( $product->is_type( 'simple' ) || $product->is_type( 'external' ) ) {
+		$regular_price  = $product->get_regular_price();
+		$sale_price     = $product->get_sale_price();
+		$bubble_content = round( ( ( floatval( $regular_price ) - floatval( $sale_price ) ) / floatval( $regular_price ) ) * 100 );
+	} elseif ( $product->is_type( 'variable' ) ) {
+		if ( $bubble_content = devvn_percentage_get_cache( $post_id ) ) {
+			return devvn_percentage_format( $bubble_content );
+		}
+
+		$available_variations = $product->get_available_variations();
+		$maximumper           = 0;
+
+		for ( $i = 0; $i < count( $available_variations ); ++ $i ) {
+			$variation_id     = $available_variations[ $i ]['variation_id'];
+			$variable_product = new WC_Product_Variation( $variation_id );
+			if ( ! $variable_product->is_on_sale() ) {
+				continue;
+			}
+			$regular_price = $variable_product->get_regular_price();
+			$sale_price    = $variable_product->get_sale_price();
+			$percentage    = round( ( ( floatval( $regular_price ) - floatval( $sale_price ) ) / floatval( $regular_price ) ) * 100 );
+			if ( $percentage > $maximumper ) {
+				$maximumper = $percentage;
+			}
+		}
+
+		$bubble_content = sprintf( __( '%s', 'woocommerce' ), $maximumper );
+
+		devvn_percentage_set_cache( $post_id, $bubble_content );
+	} else {
+		$bubble_content = __( 'Sale!', 'woocommerce' );
+
+		return $bubble_content;
+	}
+
+	return devvn_percentage_format( $bubble_content );
+}
+
+function devvn_percentage_get_cache( $post_id ) {
+	return get_post_meta( $post_id, '_devvn_product_percentage', true );
+}
+
+function devvn_percentage_set_cache( $post_id, $bubble_content ) {
+	update_post_meta( $post_id, '_devvn_product_percentage', $bubble_content );
+}
+
+// Định dạng kết quả dạng -{value}%. Ví dụ -20%
+function devvn_percentage_format( $value ) {
+	return str_replace( '{value}', $value, '-{value}%' );
+}
+
+// Xóa cache khi sản phẩm hoặc biến thể thay đổi
+function devvn_percentage_clear( $object ) {
+	$post_id = 'variation' === $object->get_type()
+		? $object->get_parent_id()
+		: $object->get_id();
+
+	delete_post_meta( $post_id, '_devvn_product_percentage' );
+}
+add_action( 'woocommerce_before_product_object_save', 'devvn_percentage_clear' );
+
+add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                                // < 2.1
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
+
+function woo_custom_cart_button_text() {
+
+	return __( 'Thêm Vào Giỏ Hàng', 'woocommerce' );
+
+}
+
+
+// Add short description to a custom product tab
+add_filter( 'woocommerce_product_tabs', 'add_custom_product_tab', 10, 1 );
+function add_custom_product_tab( $tabs ) {
+
+	$custom_tab = [
+		'custom_tab' => [
+			'title'    => __( 'Thông số sản phấm', 'woocommerce' ),
+			'priority' => 12,
+			'callback' => 'short_description_tab_content',
+		],
+	];
+	return array_merge( $custom_tab, $tabs );
+}
+
+function short_description_tab_content() {
+	global $post, $product;
+
+	$short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt );
+
+	if ( ! $short_description ) {
+		return;
+	}
+
+	echo '<div class="woocommerce-product-details__short-description">' . $short_description . '</div>'; // WPCS: XSS ok.
+}
 
 // Add variation to category product home page
 function get_attributes_product() {
@@ -581,3 +689,471 @@ function get_attributes_product() {
 	}
 	echo $html;
 }
+
+add_filter( 'woocommerce_loop_add_to_cart_link', function( $html, $product ) {
+
+	if ( $product->is_type( 'variable' ) ) {
+
+		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+
+		ob_start();
+		wc_get_template(
+			'single-product/add-to-cart/variable.php',
+			[
+				'available_variations' => $get_variations ? $product->get_available_variations() : false,
+				'attributes'           => $product->get_variation_attributes(),
+				'selected_attributes'  => $product->get_default_attributes(),
+			]
+		);
+		$html = ob_get_clean();
+
+	}
+
+	return $html;
+
+}, 10, 2 );
+
+
+// add_action( 'woocommerce_single_variation', 'balo_add_introduce_single_product', 15 );
+add_action( 'woocommerce_single_product_summary', 'balo_add_introduce_single_product', 35 );
+function balo_add_introduce_single_product() {
+	if ( ! is_singular( 'product' ) ) {
+		return;
+	}
+	?>
+	<div class="introduce">
+		<?php
+		$value = rwmb_meta( 'introduce', [ 'object_type' => 'setting' ], 'themes-options-new' );
+		echo do_shortcode( wpautop( $value ) );
+		?>
+	</div>
+	<?php
+}
+
+
+// Add custom quà tặng cho single product
+add_action( 'woocommerce_single_product_summary', 'balo_add_gift_single_product', 6 );
+function balo_add_gift_single_product() {
+	if ( ! is_singular( 'product' ) ) {
+		return;
+	}
+
+	$gift = rwmb_meta( 'qua_tang' );
+	if ( ! $gift ) {
+		return;
+	}
+
+	?>
+	<div class="woocommerce-product-details__gift">
+		<img class="alignleft" src="https://balotot.com/wp-content/uploads/2023/09/qua-tang.png" alt="icon Quà tặng" width="29" height="30">
+		<div class="abd">
+			<?php echo do_shortcode( wpautop( $gift ) ); ?>
+		</div>
+	</div>
+	<?php
+}
+
+
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+add_action( 'woocommerce_new_single_product_summary', 'woocommerce_output_related_products', 9 );
+
+
+// Related product get by product brand
+add_filter( 'woocommerce_related_products', 'related_products_by_attribute', 10, 3 );
+function related_products_by_attribute( $related_posts, $product_id, $args ) {
+	$taxonomy = 'product-brand'; // HERE define the targeted product attribute taxonomy
+
+	$term_slugs = wp_get_post_terms( $product_id, $taxonomy, [ 'fields' => 'slugs' ] ); // Get terms for the product
+
+	if ( empty( $term_slugs ) ) {
+		return $related_posts;
+	}
+
+	$posts_ids = get_posts( array(
+		'post_type'           => 'product',
+		'ignore_sticky_posts' => 1,
+		'posts_per_page'      => 5,
+		'post__not_in'        => array( $product_id ),
+		'tax_query'           => array(
+			array(
+				'taxonomy' => $taxonomy,
+				'field'    => 'slug',
+				'terms'    => $term_slugs,
+			),
+		),
+		'fields'              => 'ids',
+		'orderby'             => 'rand',
+	) );
+
+	return count( $posts_ids ) > 0 ? $posts_ids : $related_posts;
+}
+
+
+// Cookie for visited tour
+function add_cookie_single_tour() {
+	if ( ! is_singular( 'product' ) ) {
+		return;
+	}
+	if ( ! isset( $_COOKIE['visited'] ) ) {
+		setcookie( 'visited', get_the_ID(), time() + ( DAY_IN_SECONDS * 1 ), COOKIEPATH, COOKIE_DOMAIN, false );
+	} else {
+		$current_cookie = $_COOKIE['visited'];
+		if ( in_array( get_the_ID(), explode( ',', $current_cookie ) ) ) {
+			return;
+		}
+		$visited         = [
+			$current_cookie,
+			get_the_ID(),
+		];
+		$visited_implode = implode( ',', $visited );
+		setcookie( 'visited', $visited_implode, time() + ( DAY_IN_SECONDS * 1 ), COOKIEPATH, COOKIE_DOMAIN, false );
+	}
+}
+add_action( 'template_redirect', 'add_cookie_single_tour' );
+
+// San pham da xem
+add_action( 'woocommerce_new_single_product_summary', 'woocommerce_output_visited_products', 10 );
+function woocommerce_output_visited_products() {
+	$cookie = explode( ',', $_COOKIE['visited'] );
+	if ( empty( $cookie ) ) {
+		return;
+	}
+
+	?>
+	<section class="related products">
+		<h2><?php esc_html_e( 'Sản phẩm đã xem', 'woocommerce' ); ?></h2>
+		<div class=" owl__related owl-carousel owl-theme">
+			<?php
+			$related_products = get_posts( [
+				'post_type'      => 'product',
+				'posts_per_page' => 5,
+				'post__in'       => $cookie,
+			] );
+			foreach ( $related_products as $related_product ) :
+				?>
+				<?php
+					$post_object = get_post( $related_product->ID );
+					setup_postdata( $GLOBALS['post'] =& $post_object );
+					wc_get_template_part( 'content', 'product2' );
+				?>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php
+}
+
+
+// Customize checkout field.
+add_action( 'woocommerce_checkout_order_review', 'reordering_checkout_order_review', 1 );
+function reordering_checkout_order_review() {
+	remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+	add_action( 'woocommerce_checkout_order_review', 'custom_checkout_payment', 15 );
+	add_action( 'woocommerce_checkout_order_review', 'custom_checkout_place_order', 20 );
+}
+
+
+function custom_checkout_payment() {
+	$checkout = WC()->checkout();
+	if ( WC()->cart->needs_payment() ) {
+		$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+		WC()->payment_gateways()->set_current_gateway( $available_gateways );
+	} else {
+		$available_gateways = array();
+	}
+
+	if ( ! is_ajax() ) {
+		// do_action( 'woocommerce_review_order_before_payment' );
+	}
+	?>
+	<div id="payment" class="woocommerce-checkout-payment">
+		<?php if ( WC()->cart->needs_payment() ) : ?>
+			<ul class="wc_payment_methods payment_methods methods">
+				<?php
+				if ( ! empty( $available_gateways ) ) {
+					foreach ( $available_gateways as $gateway ) {
+						wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
+					}
+				} else {
+					echo '<li>';
+					echo apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '</li>'; // @codingStandardsIgnoreLine
+				}
+				?>
+			</ul>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+
+function custom_checkout_place_order() {
+	$checkout          = WC()->checkout();
+	$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) );
+	?>
+	<div id="payment-place-order">
+		<noscript>
+			<?php esc_html_e( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce' ); ?>
+			<br/><button type="submit" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
+		</noscript>
+
+		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
+
+		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
+	</div>
+
+	<?php
+	if ( ! is_ajax() ) {
+		do_action( 'woocommerce_review_order_after_payment' );
+	}
+}
+
+
+// Short code loc cho trang category product
+function filter_category_product() {
+	ob_start();
+	?>
+
+	<form name="form_filter" id="form_filter" action="" method="GET">
+		<div class="filter-all">
+			<div class="all-title">Bộ lọc
+				<span class="total" style="display: none;"></span>
+				<div class="arrow-filter"></div>
+			</div>
+			<div class="filter-other">
+				<div class="all-header"><button type="button" class="btn btn-close">Đóng</button></div>
+				<div class="all-other">
+					<div class="other list-active">
+						<div class="title">
+							<span>Đã chọn</span>
+							<a href="#">Xóa tất cả</a>
+						</div>
+						<div class="content">
+							<div class="filter-list all-active-list"></div>
+						</div>
+					</div>
+					<div class="other">
+						<div class="title">
+							<div class="arrow-filter"></div><span class="text">Giá tiền</span><span class="text-selected"
+								style="display: none;"></span>
+						</div>
+						<div class="content">
+							<!-- <div class="arrow-close" onclick="hideFilter(this)"></div> -->
+							<div class="filter-list">
+								<?php
+								$terms = get_terms( [
+									'taxonomy'   => 'price-range',
+									'hide_empty' => false,
+								] );
+								if ( empty( $terms ) || ! is_array( $terms ) ) {
+									return;
+								}
+								?>
+
+								<?php
+								foreach ( $terms as $term ) :
+									$price_range = isset( $_GET['price_range'] ) ? $_GET['price_range'] : [];
+									$active      = in_array( $term->slug, $price_range );
+									?>
+								<label class="item <?= $active ? 'active' : '' ?>">
+									<input type="checkbox" name="price_range[]" value="<?= esc_attr( $term->slug ) ?>">
+									<span class=""><?php echo esc_html( $term->name ); ?></span>
+								</label>
+								<?php endforeach; ?>
+							</div>
+							<div class="filter-button">
+								<a href="#" class="btn-filter-close">Đóng</a>
+								<a href="#" class="btn-filter-readmore">Xem kết quả</a>
+							</div>
+						</div>
+					</div>
+					<div class="other">
+						<div class="title">
+							<div class="arrow-filter"></div><span class="text">Thương hiệu</span><span class="text-selected"
+								style="display: none;"></span>
+						</div>
+						<div class="content">
+							<!-- <div class="arrow-close" onclick="hideFilter(this)"></div> -->
+							<div class="filter-list">
+								<?php
+								$terms = get_terms( [
+									'taxonomy'   => 'product-brand',
+									'hide_empty' => false,
+								] );
+								if ( empty( $terms ) || ! is_array( $terms ) ) {
+									return;
+								}
+								?>
+
+								<?php
+								foreach ( $terms as $term ) :
+									$product_brand = isset( $_GET['product_brand'] ) ? $_GET['product_brand'] : [];
+									$active        = in_array( $term->slug, $product_brand );
+									?>
+								<label class="item <?= $active ? 'active' : '' ?>">
+									<input type="checkbox" name="product_brand[]" value="<?= esc_attr( $term->slug ) ?>">
+									<span class=""><?php echo esc_html( $term->name ); ?></span>
+								</label>
+								<?php endforeach; ?>
+							</div>
+							<div class="filter-button">
+								<a href="#" class="btn-filter-close">Đóng</a>
+								<a href="#" class="btn-filter-readmore">Xem kết quả</a>
+							</div>
+						</div>
+					</div>
+					<div class="other">
+						<div class="title">
+							<div class="arrow-filter"></div><span class="text">Kích thước</span><span
+								class="text-selected" style="display: none;"></span>
+						</div>
+						<div class="content">
+							<!-- <div class="arrow-close" onclick="hideFilter(this)"></div> -->
+							<div class="filter-list">
+								<?php
+								$terms = get_terms( [
+									'taxonomy'   => 'pa_size',
+									'hide_empty' => false,
+								] );
+								if ( empty( $terms ) || ! is_array( $terms ) ) {
+									return;
+								}
+								?>
+
+								<?php
+								foreach ( $terms as $term ) :
+									$product_size = isset( $_GET['balo_size'] ) ? $_GET['balo_size'] : [];
+									$active       = in_array( $term->slug, $product_size );
+									?>
+								<label class="item <?= $active ? 'active' : '' ?>">
+									<input type="checkbox" name="balo_size[]" value="<?= esc_attr( $term->slug ) ?>">
+									<span class=""><?php echo esc_html( $term->name ); ?></span>
+								</label>
+								<?php endforeach; ?>
+							</div>
+							<div class="filter-button">
+								<a href="#" class="btn-filter-close">Đóng</a>
+								<a href="#" class="btn-filter-readmore">Xem kết quả</a>
+							</div>
+						</div>
+					</div>
+					<div class="other">
+						<div class="title">
+							<div class="arrow-filter"></div><span class="text">Màu sắc</span><span class="text-selected"
+								style="display: none;"></span>
+						</div>
+						<div class="content color">
+							<!-- <div class="arrow-close" onclick="hideFilter(this)"></div> -->
+							<div class="filter-list">
+								<?php
+								$terms = get_terms( [
+									'taxonomy'   => 'pa_color',
+									'hide_empty' => false,
+								] );
+								if ( empty( $terms ) || ! is_array( $terms ) ) {
+									return;
+								}
+								?>
+
+								<?php
+								foreach ( $terms as $term ) :
+									$product_color = isset( $_GET['balo_color'] ) ? $_GET['balo_color'] : [];
+									$active        = in_array( $term->slug, $product_color );
+									?>
+								<label class="item <?= $active ? 'active' : '' ?>">
+									<div class="color" style="background-color: <?= esc_attr( $term->slug ) ?>" data-name="<?= $term->name ?>"></div>
+									<input type="checkbox" name="balo_color[]" value="<?= esc_attr( $term->slug ) ?>">
+								</label>
+								<?php endforeach; ?>
+							</div>
+							<div class="filter-button">
+								<a href="#" class="btn-filter-close">Đóng</a>
+								<a href="#" class="btn-filter-readmore">Xem kết quả</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="all-button">
+					<a href="#"  class="btn-filter-close">Bỏ chọn</a>
+					<a href="#" class="btn-filter-readmore">Xem kết quả</a>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'filter_category_product', 'filter_category_product' );
+
+add_action( 'pre_get_posts', 'balo_filter_product_archive' );
+function balo_filter_product_archive( $query ) {
+	// Chỉ lọc ở trang archive product.
+	if ( is_admin() || ! $query->is_main_query() || ! is_tax( 'product_cat' ) ) {
+		return;
+	}
+
+	$tax_query = [
+		'relation' => 'AND',
+	];
+	// Lọc theo khoang gia.
+	$price_range = isset( $_GET['price_range'] ) ? $_GET['price_range'] : '';
+	if ( $price_range ) {
+		$tax_query[] = [
+			'taxonomy' => 'price-range',
+			'field'    => 'slug',
+			'terms'    => $price_range,
+		];
+	}
+	// Lọc theo hãng
+	$hang = isset( $_GET['product_brand'] ) ? $_GET['product_brand'] : '';
+	if ( $hang ) {
+		$tax_query[] = [
+			'taxonomy' => 'product-brand',
+			'field'    => 'slug',
+			'terms'    => $hang,
+		];
+	}
+
+	// Lọc theo kích cỡ
+	$size = isset( $_GET['balo_size'] ) ? $_GET['balo_size'] : '';
+	if ( $size ) {
+		$tax_query[] = [
+			'taxonomy' => 'pa_size',
+			'field'    => 'slug',
+			'terms'    => $size,
+		];
+	}
+
+	// Lọc theo màu sắc
+	$color = isset( $_GET['balo_color'] ) ? $_GET['balo_color'] : '';
+	if ( $color ) {
+		$tax_query[] = [
+			'taxonomy' => 'pa_color',
+			'field'    => 'slug',
+			'terms'    => $color,
+		];
+	}
+
+	$query->set( 'tax_query', $tax_query );
+}
+
+
+add_filter( 'woo_variation_swatches_html', 'balo_variation_swatches_html', 10, 3 );
+function balo_variation_swatches_html( $html, $args, $swatches_data ) {
+	if ( count( $swatches_data ) >= 4 || is_singular( 'product' ) ) {
+		foreach ( $swatches_data as $data ) {
+			if ( $data['item']->taxonomy == 'pa_color' ) {
+				$html .= '<span class="variation_swatches-more">More</span>';
+				break;
+			}
+		}
+	}
+	return $html;
+}
+
+// you have all variations same price. That's why it's not showing,
+add_filter( 'woocommerce_show_variation_price', function() {
+	return true;
+} );

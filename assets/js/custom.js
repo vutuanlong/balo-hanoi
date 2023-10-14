@@ -43,7 +43,7 @@ $('.owl__feedback').owlCarousel({
 });
 $('.owl_product').owlCarousel({
     items:5,
-    loop:true,
+    loop:false,
     autoplay:false,
     autoplayTimeout:5000,
     autoplayHoverPause:true,
@@ -67,7 +67,7 @@ $('.owl_product').owlCarousel({
 });
 $('.owl__related').owlCarousel({
     items:5,
-    loop:true,
+    loop:false,
     autoplay:false,
     autoplayTimeout:5000,
     autoplayHoverPause:true,
@@ -90,9 +90,9 @@ $('.owl__related').owlCarousel({
   }
 });
 $('.owl_news').owlCarousel({
-    items:4,
+    items:5,
     loop:true,
-    autoplay:true,
+    autoplay:false,
     autoplayTimeout:5000,
     autoplayHoverPause:true,
     dots: true,
@@ -105,7 +105,31 @@ $('.owl_news').owlCarousel({
           items:2,
       },
       1000:{
-          items:4,
+          items:5,
+      }
+  }
+});
+$('.owl_trai-nghiem').owlCarousel({
+    items:4,
+    loop:true,
+    autoplay:false,
+    autoplayTimeout:5000,
+    autoplayHoverPause:true,
+    dots: false,
+    nav:true,
+    navText:[
+     "<i class='fa fa-angle-left' aria-hidden='true'></i>",
+     "<i class='fa fa-angle-right' aria-hidden='true'></i>"
+    ],
+    responsive:{
+      0:{
+          items:2,
+      },
+      600:{
+          items:3,
+      },
+      1000:{
+          items:5,
       }
   }
 });
@@ -157,9 +181,11 @@ $('.countNumbers__number').each(function () {
 function menu () {
   $('.menu-default-open').click( function () {
     $(".menu-default").toggle();
+	$('body').toggleClass('overflow-hidden');
   });
   $('.menu-close').click( function () {
     $('.menu-default').css("display","none");
+	$('body').removeClass('overflow-hidden');
   });
 };
 $(document).ready(menu);
@@ -335,6 +361,7 @@ jQuery(document).ready(function() {
     // zoomimg.attr("style").addClass('zoomImg');
   }
 });
+
 
 $(document).ready( function () {
 	$( '.arrow-box' ).on( 'click', function () {
