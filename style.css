@@ -1036,11 +1036,12 @@ form.cart {
     text-transform: uppercase;
 }
 .woocommerce div.product .introduce {
-    text-align:left;
-    background:#ddd;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+	text-align: left;
+	background: #ffe9e9;
+	border: 1px solid #fbc4c4;
+	padding: 10px;
+	margin-bottom: 10px;
+	line-height: 2em;
 }
 /* end sp chi tiet */
 
@@ -1065,9 +1066,10 @@ form.cart {
 
 .c-footer1 .c-footer-content {border-top: 3px solid #ee1c25;}
 .c-footer1 .c-footer-content p {
-    margin: 0;
-    color: #fff;
-    opacity: .9;
+	margin: 0;
+	color: #fff;
+	opacity: .9;
+	line-height: 2em;
 }
 
 .c-footer1 .c-footer-content .c-footer-content1 p:first-child{font-weight: bold; padding-bottom: 10px; text-align: inherit;}
