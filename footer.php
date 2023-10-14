@@ -75,7 +75,18 @@
 					</div>
 				</div>
 				<div class="copywrite">
-					<p>@ Copyright 2011 <a href="https://balohanoi.vn">Balohanoi.vn</a>. All Rights Reserved</p>
+					<div class="content-box">
+						<p>@ Copyright <?= date( 'Y' ) ?> <a href="https://balohanoi.vn">Balohanoi.vn</a>. All Rights Reserved</p>
+					</div>
+					<div class="bo-cong-thuong">
+						<a title="chứng nhận của bộ công thương balotot.com" href="http://online.gov.vn/Home/WebDetails/20195" target="_blank" rel="nofollow noopener">
+							<img decoding="async" src="https://balotot.com/wp-content/uploads/2022/11/dathongbao.png" alt="Chứng nhận của bộ công thương balotot.com">
+						</a>
+						<script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+						<a class="dmca-badge" title="DMCA.com Protection Program" href="http://www.dmca.com/Protection/Status.aspx?ID=ccaad9c3-ba40-45b7-b16f-563a542018d9&amp;refurl=http://localhost:8080/balotot/" target="_blank" rel="nofollow noopener">
+							<img decoding="async" src="//images.dmca.com/Badges/dmca_protected_sml_120d.png?ID=ccaad9c3-ba40-45b7-b16f-563a542018d9" alt="DMCA.com Protection Status">
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
