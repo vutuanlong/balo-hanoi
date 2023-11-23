@@ -168,6 +168,11 @@ get_header( 'shop' ); ?>
 							<i class="fa fa-times"></i>
 						</div>
 						<?php get_sidebar(); ?>
+						<div class="filter-footer hidden-md hidden-lg">
+							<div class="filter-button">
+								<span class="btn-filter-readmore">Xem kết quả</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
