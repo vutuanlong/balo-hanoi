@@ -578,4 +578,17 @@ $(document).ready( function () {
 		}
 	}
 
+
+
+	function filter_sidebar() {
+		$( '.product-filter-mb' ).on( 'click', function() {
+			$( '.filter-sidebar' ).toggle();
+			$( 'body' ).toggleClass( 'overflow-hidden' );
+		} );
+		$( '.filter-menu-close' ).on( 'click', function() {
+			$( '.filter-sidebar' ).css( 'display', 'none' );
+			$( 'body').removeClass( 'overflow-hidden' );
+		} );
+	};
+	filter_sidebar();
 } );

@@ -71,6 +71,10 @@ get_header( 'shop' ); ?>
 							<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 						<?php endif; ?>
 					</header>
+					<div class="product-filter-mb hidden-md hidden-lg">
+						<p>Bộ lọc</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 459 459"><g><g><g><path d="M178.5,382.5h102v-51h-102V382.5z M0,76.5v51h459v-51H0z M76.5,255h306v-51h-306V255z"></path></g></g></g></svg>
+					</div>
 					<form class="woocommerce-ordering" method="get">
 						<select name="orderby" class="orderby">
 							<option value="popularity" selected="selected">Sắp xếp</option>
@@ -157,8 +161,14 @@ get_header( 'shop' ); ?>
 				?>
 				<!-- </div> -->
 
-				<div class="col-md-3 col-md-pull-9">
-					<?php get_sidebar(); ?>
+				<div class="col-md-3 col-md-pull-9 filter-sidebar">
+					<div class="filter-inner">
+						<div class="filter-menu-close hidden-md hidden-lg">
+							<span>Balohanoi.com</span>
+							<i class="fa fa-times"></i>
+						</div>
+						<?php get_sidebar(); ?>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-12 cat-description">
