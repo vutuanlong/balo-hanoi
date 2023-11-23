@@ -379,7 +379,8 @@ $(document).ready( function () {
 
 	$( '.site-search-toggler' ).on( 'click', function ( e ) {
 		e.preventDefault();
-		$( '#site-search' ).slideToggle().find( 'input' ).focus();
+		let parent = $(this).parents( '.container' );
+		parent.find( '#site-search' ).slideToggle().find( 'input' ).focus();
 	} );
 
 	// esc key close search field
