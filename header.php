@@ -12,7 +12,7 @@
     <head>
 	    <meta charset="<?php bloginfo( 'charset' ); ?>">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="google-site-verification" content="tHFcvodHb_7YXQ-TlE1_Qs4QfOfxm6SepqmS99vwyOQ" />
 		<link rel='icon' href='https://balohanoi.vn/wp-content/uploads/2018/06/favicon.ico'>
 	    <link rel="profile" href="http://gmpg.org/xfn/11">
