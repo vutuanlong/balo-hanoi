@@ -97,7 +97,8 @@
 									}
 
 
-									get_attributes_product();
+									// get_attributes_product();
+									do_action( 'woocommerce_after_shop_loop_item' );
 
 									?>
 								</div>
