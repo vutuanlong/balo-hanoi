@@ -57,10 +57,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	?>
 	<a href="<?php the_permalink() ?>">
-	<?php
-	do_action( 'woocommerce_shop_loop_item_title' );
-	?>
-	 </a> 
+		<?php do_action( 'woocommerce_shop_loop_item_title' ); ?>
+	</a>
 	<?php
 	/**
 	 * woocommerce_after_shop_loop_item_title hook.
@@ -76,6 +74,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_link_close - 5
 	 * @hooked woocommerce_template_loop_add_to_cart - 10
 	 */
-	// do_action( 'woocommerce_after_shop_loop_item' );
+	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
 </li>

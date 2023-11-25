@@ -16,28 +16,28 @@
  * @version     1.6.4
  */
 
-if (! defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 global $product;
 ?>
 
-<?php if (! $product->is_type('variable')) : ?>
-    <span class="price">
-        <?php echo $product->get_price_html(); ?>
-    </span>
+<?php if ( ! $product->is_type( 'variable' ) ) : ?>
+	<span class="price">
+		<?php echo $product->get_price_html(); ?>
+	</span>
 <?php else : ?>
-    <span class="price">
-        <span class="woocommerce-Price-amount amount">
-            <bdi>
-                <?php echo number_format($product->get_variation_price(), 0, '', '.'); ?>
-                <span class="woocommerce-Price-currencySymbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
-            </bdi>
-        </span>
-    </span>
+	<span class="price">
+		<span class="woocommerce-Price-amount amount">
+			<bdi>
+				<?php echo number_format( $product->get_variation_price(), 0, '', '.' ); ?>
+				<span class="woocommerce-Price-currencySymbol"><?php echo get_woocommerce_currency_symbol(); ?></span>
+			</bdi>
+		</span>
+	</span>
 <?php endif; ?>
 
 <?php
-get_attributes_product();
+// get_attributes_product();
 ?>

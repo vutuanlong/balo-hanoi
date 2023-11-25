@@ -691,28 +691,28 @@ function get_attributes_product() {
 	echo $html;
 }
 
-add_filter( 'woocommerce_loop_add_to_cart_link', function( $html, $product ) {
+// add_filter( 'woocommerce_loop_add_to_cart_link', function( $html, $product ) {
 
-	if ( $product->is_type( 'variable' ) ) {
+// 	if ( $product->is_type( 'variable' ) ) {
 
-		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+// 		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
 
-		ob_start();
-		wc_get_template(
-			'single-product/add-to-cart/variable.php',
-			[
-				'available_variations' => $get_variations ? $product->get_available_variations() : false,
-				'attributes'           => $product->get_variation_attributes(),
-				'selected_attributes'  => $product->get_default_attributes(),
-			]
-		);
-		$html = ob_get_clean();
+// 		ob_start();
+// 		wc_get_template(
+// 			'single-product/add-to-cart/variable.php',
+// 			[
+// 				'available_variations' => $get_variations ? $product->get_available_variations() : false,
+// 				'attributes'           => $product->get_variation_attributes(),
+// 				'selected_attributes'  => $product->get_default_attributes(),
+// 			]
+// 		);
+// 		$html = ob_get_clean();
 
-	}
+// 	}
 
-	return $html;
+// 	return $html;
 
-}, 10, 2 );
+// }, 10, 2 );
 
 
 // add_action( 'woocommerce_single_variation', 'balo_add_introduce_single_product', 15 );
