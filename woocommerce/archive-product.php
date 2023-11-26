@@ -33,7 +33,7 @@ get_header( 'shop' ); ?>
 	<div class="container l-container">
 		<div class="row">
 			<div class="col-md-9 col-md-push-3">
-				<div class="filter-tag-product clear clearfix hidden-md hidden-lg" style="margin-bottom: 20px;">
+				<div class="filter-tag-product clear clearfix hidden-md" style="margin-bottom: 20px;">
 					<?php
 					$sub_terms = rwmb_meta( 'chon_danh_muc_con', [ 'object_type' => 'term' ], get_queried_object_id() );
 					if ( ! $sub_terms ) :
