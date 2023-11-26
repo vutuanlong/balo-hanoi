@@ -62,7 +62,7 @@
 
 								?>
 
-								<div class="item">
+								<div class="item wvs-archive-product-wrapper">
 
 									<div class="item-img">
 										<a href="<?php the_permalink() ?>">
