@@ -99,7 +99,36 @@
 <a target="_blank" class="fixed__call hidden-sm hidden-md hidden-lg" href="https://www.messenger.com/t/balotot" style="left:1px;" rel="Nofollow">Gửi tin nhắn</a>
 <a class="fixed__call hidden-sm hidden-md hidden-lg" href="tel://0912.85.2222"  rel="Nofollow">Hotline: 0912.85.2222</a>
 
- <?php wp_footer(); ?>
+
+<div class="cskh-online-box show">
+	<div class="relative-box">
+		<div class="chat-icon"><img src="https://balotot.com/wp-content/uploads/2023/09/chat-icon-1.png" alt="Hỗ trợ trực tuyến"></div>
+		<div class="chat-info-box">
+			<div class="title">Hỗ trợ trực tuyến <span class="btn-close"></span></div>
+			<ul>
+				<li><a rel="nofollow" href="tel:0912852222" target="_blank">
+						<div class="img-box"><img src="https://balotot.com/wp-content/uploads/2023/09/chat-phone-icon.png" alt="Hỗ trợ trực tuyến"></div>
+						<div class="info-box">
+							<p class="large">0912.85.2222</p>
+							<p>(8h - 22h, miễn phí)</p>
+						</div>
+					</a></li>
+				<li><a rel="nofollow" href="https://www.m.me/balotot" target="_blank">
+						<div class="img-box"><img src="https://balotot.com/wp-content/uploads/2023/09/chat-mess-icon.jpg" alt="Chat với Balotot.com"></div>
+						<div class="info-box"> <span>Chat với balohanoi.vn</span> </div>
+					</a></li>
+				<li><a rel="nofollow" href="https://zalo.me/0912852222" target="_blank">
+						<div class="img-box"><img width="24px" height="24px" src="https://mia.vn/images/zalo.png"
+								alt="Chat Zalo với balohanoi.vn"></div>
+						<div class="info-box"> <span>Chat Zalo với balohanoi.vn</span> </div>
+					</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<?php wp_footer(); ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33284952-7"></script>
 <script>
