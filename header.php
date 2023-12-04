@@ -165,7 +165,7 @@
 		<div class="menu-responsive menu-default hidden-md hidden-lg">
 			<div class="sitenav-inner">
 				<div class="menu-close">
-					<span>Balotot.com</span><i class="fa fa-times"></i>
+					<span>Balohanoi.vn</span><i class="fa fa-times"></i>
 				</div>
 				<?php wp_nav_menu(array(
 					'theme_location'  => 'responsive',

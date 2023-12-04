@@ -79,7 +79,7 @@ if ( post_password_required() ) {
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
 			<div class="sp-box">
-				<h2>Tại sao nên chọn Balotot.com</h2>
+				<h2>Tại sao nên chọn Balohanoi.vn</h2>
 				<div class="sp-box-content">
 					<div class="sp-item text-center">
 						<i class="fa fa-reply-all" aria-hidden="true"></i>
