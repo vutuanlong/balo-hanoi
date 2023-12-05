@@ -38,25 +38,25 @@ get_header( 'shop' ); ?>
 					$sub_terms = rwmb_meta( 'chon_danh_muc_con', [ 'object_type' => 'term' ], get_queried_object_id() );
 					if ( ! $sub_terms ) :
 						?>
-						<a href="https://balotot.com/danh-muc/balo-dep/balo-nam/" title="balo Nam" class="filter-category "  rel="nofollow">Balo Nam </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/balo-nu/" title="balo Nữ" class="filter-category "  rel="nofollow">Balo Nữ </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/ba-lo-laptop/" title="balo laptop" class="filter-category "  rel="nofollow">Balo laptop </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/ba-lo-du-lich/" title="balo du lịch" class="filter-category "  rel="nofollow">Balo du lịch </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/balo-da/" rel="nofollow" title="BALO DA" class="filter-category ">Balo da </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/balo-keo/" rel="nofollow" title="BALO kéo" class="filter-category ">Balo kéo </a>
-						<a href="https://balotot.com/danh-muc/balo-dep/ba-lo-hoc-sinh/" rel="nofollow" title="balo học sinh" class="filter-category ">Balo học sinh  </a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-xach-laptop/" rel="nofollow" title="túi cặp laptop" class="filter-category ">CẶP - TÚI LAPTOP </a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-du-lich/" rel="nofollow" class="filter-category " title="TÚI DU LỊCH">TÚI DU LỊCH</a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-xach-the-thao/" rel="nofollow" class="filter-category " title="TÚI THỂ THAO">TÚI THỂ THAO</a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-deo-cheo/" rel="nofollow" class="filter-category " title="TÚI ĐEO CHÉO">TÚI ĐEO CHÉO</a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-xach-nam/" rel="nofollow" class="filter-category " title="Túi Nam">Túi Nam</a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-xach-da/" rel="nofollow" class="filter-category " title="CẶP TÚI DA">CẶP TÚI DA</a>
-						<a href="https://balotot.com/danh-muc/tui-xach-dep/tui-bao-tu-nho/" rel="nofollow" class="filter-category " title="TÚI ĐEO CHÉO">TÚI BAO TỬ NHỎ</a>
-						<a href="https://balotot.com/danh-muc/vali-keo/vali-keo-chat-lieu-vai/" rel="nofollow" class="filter-category " title="vali vải">Vali vải</a>
-						<a href="https://balotot.com/danh-muc/vali-keo/vali-keo-nhua-deo/" rel="nofollow" class="filter-category " title="vali nhựa">Vali Nhựa</a>
-						<a href="https://balotot.com/danh-muc/vali-keo/vali-keo-loai-to/" rel="nofollow" class="filter-category " title="Vali loại to">Vali Loại To</a>
-						<a href="https://balotot.com/danh-muc/vali-keo/vali-keo-loai-nho/" rel="nofollow" class="filter-category " title="Vali loại nhỏ">Vali Loại nhỏ</a>
-						<a href="https://balotot.com/danh-muc/phu-kien/vi-da/" rel="nofollow" class="filter-category " title="Ví da nam nữ">Ví da nam nữ</a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/balo-nam/" title="balo Nam" class="filter-category "  rel="nofollow">Balo Nam </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/balo-nu/" title="balo Nữ" class="filter-category "  rel="nofollow">Balo Nữ </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/ba-lo-laptop/" title="balo laptop" class="filter-category "  rel="nofollow">Balo laptop </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/ba-lo-du-lich/" title="balo du lịch" class="filter-category "  rel="nofollow">Balo du lịch </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/balo-da/" rel="nofollow" title="BALO DA" class="filter-category ">Balo da </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/balo-keo/" rel="nofollow" title="BALO kéo" class="filter-category ">Balo kéo </a>
+						<a href="https://balohanoi.vn/danh-muc/balo-dep/ba-lo-hoc-sinh/" rel="nofollow" title="balo học sinh" class="filter-category ">Balo học sinh  </a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-xach-laptop/" rel="nofollow" title="túi cặp laptop" class="filter-category ">CẶP - TÚI LAPTOP </a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-du-lich/" rel="nofollow" class="filter-category " title="TÚI DU LỊCH">TÚI DU LỊCH</a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-xach-the-thao/" rel="nofollow" class="filter-category " title="TÚI THỂ THAO">TÚI THỂ THAO</a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-deo-cheo/" rel="nofollow" class="filter-category " title="TÚI ĐEO CHÉO">TÚI ĐEO CHÉO</a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-xach-nam/" rel="nofollow" class="filter-category " title="Túi Nam">Túi Nam</a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-xach-da/" rel="nofollow" class="filter-category " title="CẶP TÚI DA">CẶP TÚI DA</a>
+						<a href="https://balohanoi.vn/danh-muc/tui-xach-dep/tui-bao-tu-nho/" rel="nofollow" class="filter-category " title="TÚI ĐEO CHÉO">TÚI BAO TỬ NHỎ</a>
+						<a href="https://balohanoi.vn/danh-muc/vali-keo/vali-keo-chat-lieu-vai/" rel="nofollow" class="filter-category " title="vali vải">Vali vải</a>
+						<a href="https://balohanoi.vn/danh-muc/vali-keo/vali-keo-nhua-deo/" rel="nofollow" class="filter-category " title="vali nhựa">Vali Nhựa</a>
+						<a href="https://balohanoi.vn/danh-muc/vali-keo/vali-keo-loai-to/" rel="nofollow" class="filter-category " title="Vali loại to">Vali Loại To</a>
+						<a href="https://balohanoi.vn/danh-muc/vali-keo/vali-keo-loai-nho/" rel="nofollow" class="filter-category " title="Vali loại nhỏ">Vali Loại nhỏ</a>
+						<a href="https://balohanoi.vn/danh-muc/phu-kien/vi-da/" rel="nofollow" class="filter-category " title="Ví da nam nữ">Ví da nam nữ</a>
 					<?php else : ?>
 						<?php foreach ( $sub_terms as $sub_term ) : ?>
 							<a class="filter-category" rel="nofollow" href="<?= esc_url( get_term_link( $sub_term ) ) ?>">
